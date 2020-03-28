@@ -1,0 +1,195 @@
+<footer>
+    <!-- <div class="container" hidden="">
+        <div class="row"> {% if informations %}
+            <div class="col-sm-3">
+                <h5>{{ text_information }}</h5>
+                <ul class="list-unstyled">
+                    {% for information in informations %}
+                    <li><a href="{{ information.href }}">{{ information.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <div class="col-sm-3">
+                <h5>{{ text_service }}</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{{ contact }}">{{ text_contact }}</a></li>
+                    <li><a href="{{ return }}">{{ text_return }}</a></li>
+                    <li><a href="{{ sitemap }}">{{ text_sitemap }}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>{{ text_extra }}</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{{ manufacturer }}">{{ text_manufacturer }}</a></li>
+                    <li><a href="{{ voucher }}">{{ text_voucher }}</a></li>
+                    <li><a href="{{ affiliate }}">{{ text_affiliate }}</a></li>
+                    <li><a href="{{ special }}">{{ text_special }}</a></li>
+                </ul>
+            </div>
+            <div class="col-sm-3">
+                <h5>{{ text_account }}</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{{ account }}">{{ text_account }}</a></li>
+                    <li><a href="{{ order }}">{{ text_order }}</a></li>
+                    <li><a href="{{ wishlist }}">{{ text_wishlist }}</a></li>
+                    <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
+                </ul>
+            </div>
+        </div>
+        {# <hr>
+        <p>{{ powered }}</p> #}
+    </div>
+    <div class="container" hidden>
+        <div class="row">
+            <div class="col-md-6 text-center">
+                <h4>{{ name }}</h4>
+                <p>{{ address }}</p>
+                <p>{{ telephone }}</p>
+                <p>{{ email }}</p>
+            </div>
+            <div class="col-md-6">
+                <div class="fb-page" data-href="{{ fanpage }}" data-tabs="timeline" data-height="200" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="{{ fanpage }}" class="fb-xfbml-parse-ignore"><a href="{{ fanpage }}"></a></blockquote></div>
+            </div>
+        </div>
+    </div> -->
+    <div class="spacer30"></div>
+    <div class="copyright">
+        <div class="container text-center">
+            <p>Copyright © 2020. All rights reserved. Designed by MT</p>
+        </div>
+    </div>
+    <div class="group-icon">
+        <a href="https://zalo.me/0971934495" target="_blank"><img src="image/zalo.png" alt=""></a>
+        <a href="tel:0932363047"><img src="image/phone.png" alt=""></a>
+    </div>
+</footer>
+<div class="modal fade" id="modal_register">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Đăng ký vay</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row form-register" id="form-register1">
+                    <div class="col-md-6 col-12">
+                        <div class="form-group required">
+                            <label for="yourname1">Tên của bạn</label>
+                            <input type="text" class="form-control form-control-lg" id="yourname1" placeholder="Nhập tên của bạn"
+                                name="yourname1" required="">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group required">
+                            <label for="telephone1">Số điện thoại</label>
+                            <input type="text" class="form-control form-control-lg" id="telephone1" placeholder="Nhập số điện thoại"
+                                name="telephone1" required="">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group required">
+                            <label for="identity_card1">CMDN</label>
+                            <input type="text" class="form-control form-control-lg" id="identity_card1" placeholder="Nhập CMDN"
+                                name="identity_card1" required="">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group required">
+                            <label for="address1">Địa chỉ thường trú</label>
+                            <input type="text" class="form-control form-control-lg" id="address1" placeholder="Nhập địa chỉ"
+                                name="address1" required="">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" id="send_reghister1" class="btn btn-primary">Đăng ký</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    $('#send_reghister1').click(function () {
+        var yourname1 = $('#yourname1').val();
+        var telephone1 = $('#telephone1').val();
+        var identity_card1 = $('#identity_card1').val();
+        var address1 = $('#address1').val();
+        $('#form-register1 .text-danger').remove();
+        $.ajax({
+            url: 'index.php?route=common/home/add_register',
+            type: 'post',
+            data: { yourname: yourname1, telephone: telephone1, identity_card: identity_card1, address: address1 },
+            dataType: 'json',
+            beforeSend: function () {
+                $('#send_reghister1').button('loading');
+            },
+            complete: function () {
+                $('#send_reghister1').button('reset');
+            },
+            success: function (json) {
+                if (json['error_yourname']) {
+                    $('#yourname1').after('<div class="text-danger">' + json['error_yourname'] + '</div>')
+                }
+                if (json['error_telephone']) {
+                    $('#telephone1').after('<div class="text-danger">' + json['error_telephone'] + '</div>')
+                }
+                if (json['error_identity_card']) {
+                    $('#identity_card1').after('<div class="text-danger">' + json['error_identity_card'] + '</div>')
+                }
+                if (json['error_address']) {
+                    $('#address1').after('<div class="text-danger">' + json['error_address'] + '</div>')
+                }
+
+                if (json['success']) {
+                    alert(json['success']);
+                    location.reload();
+                }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError + "\r\n" + xhr.statusText + "\r\n" + xhr.responseText);
+            }
+        });
+    });
+</script>
+<script>
+    window.fbAsyncInit = function() {
+    FB.init({
+      appId            : 'your-app-id',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v3.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/vi_VN/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+   {% if status_register == '' %}
+   $(document).ready(function() {
+    $("#modal_register").modal("show");
+   });
+   {% endif %}
+</script>
+{% for script in scripts %} 
+<script src="{{ script }}" type="text/javascript"></script> 
+{% endfor %} 
+<!--
+OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
+Please donate via PayPal to donate@opencart.com
+//-->
+</body></html>

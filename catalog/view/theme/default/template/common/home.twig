@@ -1,0 +1,126 @@
+{{ header }}
+<div class="home-banner">
+    <div id="demo" class="carousel slide" data-ride="carousel"> 
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            {% if banners %}
+            {% for key, item in banners %}
+            <li data-target="#demo" data-slide-to="{{ key }}" class="{%if key == '0' %}active{% endif %}"></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            {% if banners %}
+            {% for key, item in banners %}
+            <div class="carousel-item {% if key == '0' %}active{% endif %}"> 
+                {% if item.link %}
+                <a href="{{ item.link }}"><img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid"></a>
+                {% else %}
+                <img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid"> 
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Left and right controls --> 
+        <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+    </div>
+</div>
+<div id="common-home" class="container">
+    <div class="row">
+        {{ column_left }}
+        {% if column_left and column_right %}
+        {% set class = 'col-sm-6' %}
+        {% elseif column_left or column_right %}
+        {% set class = 'col-sm-9' %}
+        {% else %}
+        {% set class = 'col-sm-12' %}
+        {% endif %}
+        <div id="content" class="{{ class }}"> 
+            {{ content_top }}
+            <div class="spacer40"></div>
+            {# <div class="row">
+                <div class="col-12">
+                    <div class="title-news">
+                        <span>Tin tức - sự kiện</span>
+                    </div>
+                </div>
+                <div class="spacer10"></div>
+                {% if posts %}
+                {% for key, post in posts %}
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="box-news">
+                        <a href="{{ post.post.href }}">
+                            <img src="{{ post.post.thumb }}" class="img-fluid" alt="{{ post.post.image_alt }}" title="{{ post.post.image_title }}">
+                        </a>
+                        <div class="spacer10"></div>
+                        <a href="{{ post.post.href }}"><h5>{{ post.post.title }}</h5></a>
+                        <!-- <p class="author"><a href="{{ post.post.author_link }}">{{ post.post.author }}</a> - <span>{{ post.post.date_published }}</span></p> -->
+                        <p>{{ post.post.short_description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div> #}
+            {% for category in categories %}
+            <div class="row">
+                <div class="col-12">
+                    <div class="title-news">
+                        <span>{{ category.title }}</span>
+                    </div>
+                </div>
+                <div class="spacer10"></div>
+                {% if category.posts %}
+                {% for key, post in category.posts %}
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="box-news">
+                        <a href="{{ post.post.href }}">
+                            <img src="{{ post.post.thumb }}" class="img-fluid" alt="{{ post.post.image_alt }}" title="{{ post.post.image_title }}">
+                        </a>
+                        <div class="spacer10"></div>
+                        <a href="{{ post.post.href }}"><h5>{{ post.post.title }}</h5></a>
+                        <!-- <p class="author"><a href="{{ post.post.author_link }}">{{ post.post.author }}</a> - <span>{{ post.post.date_published }}</span></p> -->
+                        <p>{{ post.post.short_description }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+            {{ content_bottom }}
+        </div>
+        {{ column_right }} 
+    </div>
+</div>
+<script>
+    AOS.init({
+        easing: 'ease-in-out-sine'
+    });
+    
+    $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        nav:false,
+        autoplay:true,
+        autoplayTimeout:3000,
+        autoplayHoverPause:true,
+        responsive:{
+            0:{
+                items:1
+            },
+            576:{
+                items:2
+            },
+            768:{
+                items:3
+            },
+            992:{
+                items:3
+            }
+        }
+    })
+</script>
+{{ footer }}
