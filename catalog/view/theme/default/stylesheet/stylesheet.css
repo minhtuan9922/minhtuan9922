@@ -5,7 +5,6 @@ body {
 	font-size: 14px;
 	line-height: 20px;
 	width: 100%;
-	padding-top: 54px;
 }
 /*h1, h2, h3, h4, h5, h6 {
 	color: #444;
@@ -89,9 +88,11 @@ header {
 /* end header */
 /* top */
 #top {
-	background-color: #FFFFFF;
+	background: url('../image/banner-header.png') no-repeat;
+	background-color: #156c68;
     padding-top: 10px;
-    padding-bottom: 10px;
+	padding-bottom: 10px;
+	height: 125px;
 }
 #top .name-store {
     color: #4eac42;
@@ -141,6 +142,22 @@ header {
 	font-size: 14px;
         line-height: 14px;
 }
+#top .link-header {
+	display: flex;
+	justify-content: flex-end;
+	height: 100%;
+	align-items: flex-end;
+}
+#top .link-header a {
+	font-size: 15px;
+	font-weight: bold;
+	color: #fff;
+	background: #3030303d;
+	padding: 10px 15px;
+}
+#top .link-header a:hover {
+	background: #ccc;
+}
 #top-links {
 	padding-top: 6px;
 }
@@ -158,9 +175,12 @@ header {
 .logo {
 	padding-top: 0;
 	padding-bottom: 0;
+	display: flex;
+	align-items: center;
+	height: 115px;
 }
 .logo img {
-	height: 38px;
+	max-height: 100%;
 }
 /* search */
 #search {
@@ -809,8 +829,13 @@ h2.price {
     color: #FFFFFF;    
 }
 .nav-bg {
-	background-color: #ffffff;
+	background-color: #0a4f9f;
 	box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+}
+.navbar-nav .nav-link {
+	color: #fff;
+	font-size: 15px;
+	font-weight: bold;
 }
 .menu-home {
     margin: 0;
