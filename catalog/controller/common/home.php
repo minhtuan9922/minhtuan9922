@@ -149,22 +149,22 @@ class ControllerCommonHome extends Controller {
 		}
         
         //slide
-        $this->load->model('design/banner');
-		$this->load->model('tool/image');
+        // $this->load->model('design/banner');
+		// $this->load->model('tool/image');
 		
-		$data['banners'] = array();
+		// $data['banners'] = array();
 
-		$results = $this->model_design_banner->getBanner(7);
+		// $results = $this->model_design_banner->getBanner(7);
 
-		foreach ($results as $result) {
-			if (is_file(DIR_IMAGE . $result['image'])) {
-				$data['banners'][] = array(
-					'title' => $result['title'],
-					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize($result['image'], 1920, 470)
-				);
-			}
-		}
+		// foreach ($results as $result) {
+		// 	if (is_file(DIR_IMAGE . $result['image'])) {
+		// 		$data['banners'][] = array(
+		// 			'title' => $result['title'],
+		// 			'link'  => $result['link'],
+		// 			'image' => $this->model_tool_image->resize($result['image'], 1920, 470)
+		// 		);
+		// 	}
+		// }
         
         //about
         $this->load->model('catalog/information');

@@ -1,4 +1,4 @@
-<div class="swiper-viewport">
+{# <div class="swiper-viewport">
     <div id="slideshow{{ module }}" class="swiper-container">
         <div class="swiper-wrapper"> 
             {% for banner in banners %}
@@ -20,7 +20,7 @@
         <div class="swiper-button-prev"></div>
     </div>
 </div>
-<script type="text/javascript"><!--
+<script type="text/javascript">
 $('#slideshow{{ module }}').swiper({
 	mode: 'horizontal',
 	slidesPerView: 1,
@@ -33,4 +33,34 @@ $('#slideshow{{ module }}').swiper({
     autoplayDisableOnInteraction: true,
 	loop: true
 });
---></script>
+</script> #}
+<div class="home-banner">
+    <div id="demo" class="carousel slide" data-ride="carousel"> 
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            {% if banners %}
+            {% for key, item in banners %}
+            <li data-target="#demo" data-slide-to="{{ key }}" class="{%if key == '0' %}active{% endif %}"></li>
+            {% endfor %}
+            {% endif %}
+        </ul>
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            {% if banners %}
+            {% for key, item in banners %}
+            <div class="carousel-item {% if key == '0' %}active{% endif %}"> 
+                {% if item.link %}
+                <a href="{{ item.link }}"><img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid"></a>
+                {% else %}
+                <img src="{{ item.image }}" alt="{{ item.title }}" class="img-fluid"> 
+                {% endif %}
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <!-- Left and right controls --> 
+        <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
+    </div>
+</div>

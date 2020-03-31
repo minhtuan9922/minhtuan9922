@@ -1,5 +1,5 @@
 {{ header }}
-<div class="home-banner">
+{# <div class="home-banner">
     <div id="demo" class="carousel slide" data-ride="carousel"> 
         <!-- Indicators -->
         <ul class="carousel-indicators">
@@ -28,8 +28,9 @@
         <!-- Left and right controls --> 
         <a class="carousel-control-prev" href="#demo" data-slide="prev"> <span class="carousel-control-prev-icon"></span> </a> <a class="carousel-control-next" href="#demo" data-slide="next"> <span class="carousel-control-next-icon"></span> </a> 
     </div>
-</div>
-<div id="common-home" class="container">
+</div> #}
+{{ content_top }}
+<div id="common-home" class="container-fluid">
     <div class="row">
         {{ column_left }}
         {% if column_left and column_right %}
@@ -40,7 +41,7 @@
         {% set class = 'col-sm-12' %}
         {% endif %}
         <div id="content" class="{{ class }}"> 
-            {{ content_top }}
+            {# {{ content_top }} #}
             <div class="spacer40"></div>
             {# <div class="row">
                 <div class="col-12">
