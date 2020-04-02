@@ -1018,11 +1018,11 @@ h2.price {
     margin-bottom: 10px;
 }
 .title-news {
-    border-bottom: 2px solid #f9c100;
+    border-bottom: 2px solid #0e9679;
     display: block;
 }
 .title-news span {
-    background-color: #f9c100;
+    background-color: #0e9679;
     color: #FFFFFF;
     font-size: 18px;
     padding-left: 10px;
@@ -1053,10 +1053,10 @@ h2.price {
     line-height: 31px;
 }
 .text-green {
-    color: #4eac42;
+    color: #0e9679;
 }
 .bg-green {
-    background-color: #4eac42;
+    background-color: #0e9679;
 }
 .product-random {
     background: url("../../../../../image/layer2212-3647.png") no-repeat;
@@ -1186,5 +1186,133 @@ footer .group-icon a::before {
 	
 	50% {
 		opacity: 1;
+	}
+}
+.categories-item {
+	background: transparent;
+	color: #fff;
+	text-align: center;
+}
+.content-achievement {
+	width: 90%;
+	margin: auto;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.content-achievement .content-achievement-icon {
+	position: relative;
+    font-size: 49px;
+    z-index: 999;
+	color: #0e9679;
+	margin-bottom: 10px;
+}
+.content-achievement:hover .content-achievement-icon {
+	animation: bounce 2s ease infinite;
+	-webkit-animation: bounce 2s ease infinite;
+	transition: all .4s linear;
+}
+.content-achievement .content-achievement-content {
+    font-weight: bold;
+    text-align: center;
+    width: 93%;
+    height: 48px;
+    line-height: 48px;
+    background-color: #0e9679;
+    margin: auto;
+    position: relative;
+}
+.content-achievement .content-achievement-title {
+    font-weight: bold;
+    text-align: center;
+    height: 48px;
+    line-height: 48px;
+    background-color: #0e9679;
+    margin: auto;
+	position: relative;
+	color: #fff;
+}
+.content-achievement .content-achievement-content::before {
+	content: "";
+    position: absolute;
+    left: -24px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    bottom: 0;
+    border-width: 0 0 24px 24px;
+    border-color: transparent transparent #0e9679 transparent;
+}
+.content-achievement .content-achievement-content::after {
+	content: '';
+    position: absolute;
+    border-style: solid;
+    border-color: transparent;
+    left: -24px;
+    top: 0;
+    border-width: 0 24px 24px 0;
+    border-color: transparent #0e9679 transparent transparent;
+}
+.content-achievement .content-achievement-title::before {
+	content: "";
+    position: absolute;
+    right: -24px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    top: 0;
+    border-width: 24px 0 0 24px;
+    border-color: transparent transparent transparent #0e9679;
+}
+.content-achievement .content-achievement-title::after {
+	content: "";
+    position: absolute;
+    right: -24px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    bottom: 0;
+    border-width: 24px 24px 0 0;
+    border-color: #0e9679 transparent transparent transparent;
+}
+.content-achievement:hover .content-achievement-content {
+    background-color: #f78c06;
+}
+.content-achievement:hover .content-achievement-title {
+    background-color: #f78c06;
+}
+.content-achievement:hover .content-achievement-content::before {
+    border-color: transparent transparent #f78c06 transparent;
+}
+.content-achievement:hover .content-achievement-content::after {
+    border-color: transparent #f78c06 transparent transparent;
+}
+.content-achievement:hover .content-achievement-title::before {
+    border-color: transparent transparent transparent #f78c06;
+}
+.content-achievement:hover .content-achievement-title::after {
+    border-color: #f78c06 transparent transparent transparent;
+}
+@keyframes bounce { 
+	0%, 20%, 53%, 80%, 100% {
+		-webkit-transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		transition-timing-function:cubic-bezier(0.215, 0.610, 0.355, 1.000);
+		-webkit-transform:translate3d(0, 0, 0);
+		transform:translate3d(0, 0, 0)
+	}
+	40%, 43% {
+		-webkit-transition-timing-function:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		transition-timing-function:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		-webkit-transform:translate3d(0, -30px, 0);
+		transform:translate3d(0, -30px, 0)
+	}
+	70% {
+		-webkit-transition-timing-function:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		transition-timing-function:cubic-bezier(0.755, 0.050, 0.855, 0.060);
+		-webkit-transform:translate3d(0, -15px, 0);
+		transform:translate3d(0, -15px, 0)
+	}
+	90% {
+		-webkit-transform:translate3d(0, -4px, 0);
+		transform:translate3d(0, -4px, 0)
 	}
 }

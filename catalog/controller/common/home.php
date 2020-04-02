@@ -32,7 +32,7 @@ class ControllerCommonHome extends Controller {
 			$this->theme = $this->config->get('config_template');
 		}
 		
-        $this->load->language('extension/d_blog_module/category');
+        // $this->load->language('extension/d_blog_module/category');
 
         $this->load->model('extension/module/d_blog_module');
         $this->load->model('extension/d_blog_module/category');
@@ -46,7 +46,9 @@ class ControllerCommonHome extends Controller {
 	public function index() {
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
-		$this->document->setKeywords($this->config->get('config_meta_keyword'));
+        $this->document->setKeywords($this->config->get('config_meta_keyword'));
+        
+        $this->load->language('common/home');
 
 		if (isset($this->request->get['route'])) {
 			$this->document->addLink($this->config->get('config_url'), 'canonical');

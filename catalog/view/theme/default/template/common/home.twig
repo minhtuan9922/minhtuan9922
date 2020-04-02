@@ -46,14 +46,17 @@
             <div class="product-random">
                 <div class="owl-carousel owl-theme">
                     {% for category in categories %}
-                    <div class="category-item item">
-                        <img src="{{ category.thumb }}" alt="">
-                        <h5 class="text-uppercase">{{ category.title }}</h5>
+                    <div class="categories-item item">
+                        <a href="{{ category.href }}">
+                            <img src="{{ category.thumb }}" alt="">
+                            <div class="spacer15"></div>
+                            <h5 class="text-uppercase">{{ category.title }}</h5>
+                        </a>
                     </div>
                     {% endfor %}
                 </div>
             </div>
-            {% for category in categories %}
+            {# {% for category in categories %}
             <div class="row">
                 <div class="col-12">
                     <div class="title-news">
@@ -77,7 +80,89 @@
                 {% endfor %}
                 {% endif %}
             </div>
-            {% endfor %}
+            {% endfor %} #}
+            <div class="spacer40"></div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="title-news">
+                        <span>{{ text_title_1 }}</span>
+                    </div>
+                    <div class="spacer15"></div>
+                    <p>{{ text_content_1 }}</p>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_1 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_2 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_3 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_4 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fab fa-cc-visa"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_5 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 col-sm-6 col-12">
+                    <div class="content-achievement">
+                        <div class="content-achievement-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="content-achievement-content">
+                            <div class="content-achievement-title">
+                                {{ text_step_6 }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {{ content_bottom }}
         </div>
         {{ column_right }} 
@@ -90,14 +175,14 @@
     
     $('.owl-carousel').owlCarousel({
         loop:true,
-        margin:10,
+        margin:30,
         nav:false,
         autoplay:true,
         autoplayTimeout:3000,
         autoplayHoverPause:true,
         responsive:{
             0:{
-                items:2
+                items:1
             },
             576:{
                 items:2
