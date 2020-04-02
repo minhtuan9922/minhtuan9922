@@ -399,6 +399,10 @@ class ControllerCommonHome extends Controller {
                 );
             }
         }
+
+        // $list_category = $this->model_extension_d_blog_module_category->getCategories(7);
+        // print_r($list_category);
+
         // echo '<pre>';
         // print_r($data['categories']);
         // echo '</pre>';

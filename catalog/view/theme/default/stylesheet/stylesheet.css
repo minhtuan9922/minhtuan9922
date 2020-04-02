@@ -1061,8 +1061,7 @@ h2.price {
 .product-random {
     background: url("../../../../../image/layer2212-3647.png") no-repeat;
     background-size: 100% 100%;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding: 40px 15px;
 }
 .product-random .product-item .product-thumb {
     background-color: transparent;

@@ -2,3 +2,5 @@ config.php
 admin/config.php
 image/cache/*
 #system/*
+system/storage/cache
+storage/cache

@@ -21,15 +21,7 @@ class ModelExtensionDBlogModuleCategory extends Model {
     }
 
     public function getCategories($parent_id = 0) {
-        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_category c "
-            . "LEFT JOIN " . DB_PREFIX . "bm_category_description cd "
-            . "ON (c.category_id = cd.category_id) "
-            . "LEFT JOIN " . DB_PREFIX . "bm_category_to_store c2s "
-            . "ON (c.category_id = c2s.category_id) "
-            . "WHERE c.parent_id = '" . (int) $parent_id . "' "
-            . "AND cd.language_id = '" . (int) $this->config->get('config_language_id')
-            . "' AND c2s.store_id = '" . (int) $this->config->get('config_store_id')
-            . "'  AND c.status = '1' GROUP BY c.category_id ORDER BY c.sort_order, LCASE(cd.title)");
+        $query = $this->db->query("SELECT * FROM " . DB_PREFIX . "bm_category c LEFT JOIN " . DB_PREFIX . "bm_category_description cd ON (c.category_id = cd.category_id) LEFT JOIN " . DB_PREFIX . "bm_category_to_store c2s ON (c.category_id = c2s.category_id) WHERE c.parent_id = '" . (int) $parent_id . "' AND cd.language_id = '" . (int) $this->config->get('config_language_id') . "' AND c2s.store_id = '" . (int) $this->config->get('config_store_id') . "'  AND c.status = '1' GROUP BY c.category_id ORDER BY c.sort_order, LCASE(cd.title)");
 
         $results = $query->rows;
         foreach($results as $key => $result){
@@ -71,15 +63,7 @@ class ModelExtensionDBlogModuleCategory extends Model {
         $filter_group_data = array();
 
         if ($implode) {
-            $filter_group_query = $this->db->query("SELECT DISTINCT f.filter_group_id, fgd.title, fg.sort_order "
-                . "FROM " . DB_PREFIX . "bm_filter f "
-                . "LEFT JOIN " . DB_PREFIX . "bm_filter_group fg "
-                . "ON (f.filter_group_id = fg.filter_group_id) "
-                . "LEFT JOIN " . DB_PREFIX . "bm_filter_group_description fgd "
-                . "ON (fg.filter_group_id = fgd.filter_group_id) "
-                . "WHERE f.filter_id IN (" . implode(',', $implode) . ") "
-                . "AND fgd.language_id = '" . (int) $this->config->get('config_language_id')
-                . "' GROUP BY f.filter_group_id ORDER BY fg.sort_order, LCASE(fgd.title)");
+            $filter_group_query = $this->db->query("SELECT DISTINCT f.filter_group_id, fgd.title, fg.sort_order FROM " . DB_PREFIX . "bm_filter f LEFT JOIN " . DB_PREFIX . "bm_filter_group fg ON (f.filter_group_id = fg.filter_group_id) LEFT JOIN " . DB_PREFIX . "bm_filter_group_description fgd ON (fg.filter_group_id = fgd.filter_group_id) WHERE f.filter_id IN (" . implode(',', $implode) . ") AND fgd.language_id = '" . (int) $this->config->get('config_language_id') . "' GROUP BY f.filter_group_id ORDER BY fg.sort_order, LCASE(fgd.title)");
 
             foreach ($filter_group_query->rows as $filter_group) {
                 $filter_data = array();
@@ -88,8 +72,8 @@ class ModelExtensionDBlogModuleCategory extends Model {
                     . "FROM " . DB_PREFIX . "bm_filter f "
                     . "LEFT JOIN " . DB_PREFIX . "bm_filter_description fd "
                     . "ON (f.filter_id = fd.filter_id) "
-                    . "WHERE f.filter_id IN (" . implode(',', $implode) . ") "
-                    . "AND f.filter_group_id = '" . (int) $filter_group['filter_group_id']
+                    . "WHERE f.filter_id IN (" . implode(',', $implode) . ")
+                    AND f.filter_group_id = '" . (int) $filter_group['filter_group_id']
                     . "' AND fd.language_id = '" . (int) $this->config->get('config_language_id')
                     . "' ORDER BY f.sort_order, LCASE(fd.title)");
 
@@ -188,5 +172,4 @@ class ModelExtensionDBlogModuleCategory extends Model {
             }
         }
     }
-
 }
