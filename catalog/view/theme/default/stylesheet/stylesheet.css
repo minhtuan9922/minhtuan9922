@@ -1316,3 +1316,14 @@ footer .group-icon a::before {
 		transform:translate3d(0, -4px, 0)
 	}
 }
+.info-about {
+    width: 100%;
+	color: #fff;
+    background-image: url('../image/bacground-vechungtoi.jpg');
+    background-position: 50% 70%;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+	line-height: 23px;
+	padding: 50px 20px;
+}
