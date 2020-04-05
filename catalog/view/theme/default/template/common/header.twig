@@ -116,9 +116,9 @@
                             <a class="nav-link" href="{{ home }}"><i class="fas fa-home"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ aboutus }}">GIỚI THIỆU</a>
+                            <a class="nav-link" href="{{ aboutus }}">Giới thiệu</a>
                         </li>
-                        <!-- <li class="nav-item dropdown">
+                        {# <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">DANH MỤC</a>
                             <div class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
                                 {% if categories %}
@@ -131,7 +131,23 @@
                                 {% endfor %}
                                 {% endif %}
                             </div>
-                        </li> -->
+                        </li> #}
+                        {% for item in menu_blog %}
+                        {% if item.list_child != '' %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ item.title }}</a>
+                            <div class="dropdown-menu menu-drop" aria-labelledby="navbarDropdown">
+                                {% for child in item.list_child %}
+                                <a class="dropdown-item" href="{{ child.href }}">{{ child.title }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ item.href }}">{{ item.title }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
 <!--
                         <li class="nav-item">
                             <a class="nav-link" href="{{ special }}">Khuyễn mãi</a>
@@ -145,7 +161,7 @@
                         </li> -->
                     </ul>
                     <!-- {{ search }} -->
-                    <ul class="navbar-nav ml-auto">
+                    {# <ul class="navbar-nav ml-auto">
                         <!-- {{ cart }} -->
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="{{ login }}">ĐĂNG NHẬP</a>
@@ -156,7 +172,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#modal_register">ĐĂNG KÝ VAY</a>
                         </li>
-                    </ul>
+                    </ul> #}
                 </div>
             </div>
         </nav>

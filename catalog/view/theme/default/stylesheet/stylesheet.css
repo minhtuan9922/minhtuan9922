@@ -382,10 +382,10 @@ header {
 }
 /* footer */
 footer {
-	/* margin-top: 30px;
+	margin-top: 30px;
 	padding-top: 30px;
-	background-color: #28821d; */
-	color: #e2e2e2;
+	background-color: #bfbfbf;
+	color: #525252;
 }
 footer hr {
 	border-top: none;
@@ -1077,9 +1077,8 @@ h2.price {
     margin-bottom: 0;
 }
 footer .copyright {
-    background-color: #1c5b14;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    background-color: #bfbfbf;
+    padding: 10px 15px;
 }
 footer .copyright p {
     margin-bottom: 0;
@@ -1102,6 +1101,7 @@ footer .group-icon {
 	position: fixed;
 	right: 40px;
 	bottom: 40px;
+	z-index: 1000;
 }
 footer .group-icon img {
 	height: 40px;
@@ -1113,6 +1113,9 @@ footer .group-icon a {
 	position: relative;
 	display: inline-block;
 	z-index: 2;
+}
+footer h5, footer h4 {
+	color: #eb1159;
 }
 footer .group-icon a::after {
 	content: '';
@@ -1202,7 +1205,6 @@ footer .group-icon a::before {
 .content-achievement .content-achievement-icon {
 	position: relative;
     font-size: 49px;
-    z-index: 999;
 	color: #0e9679;
 	margin-bottom: 10px;
 }

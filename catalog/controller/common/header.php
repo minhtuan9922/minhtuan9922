@@ -97,6 +97,34 @@ class ControllerCommonHeader extends Controller {
 				);
 			}
 		}
+
+		// menu blog
+		$this->load->model('extension/d_blog_module/category');
+		$categories_blog = $this->model_extension_d_blog_module_category->getCategories();
+		$data['menu_blog'] = array();
+		if(!empty($categories_blog))
+		{
+			foreach($categories_blog as $item)
+			{
+				$list_child = $this->model_extension_d_blog_module_category->getCategories($item['category_id']);
+				$data_child = array();
+				if(!empty($list_child))
+				{
+					foreach($list_child as $child)
+					{
+						$data_child[] = array(
+							'title' => $child['title'],
+							'href'  => $this->url->link('extension/d_blog_module/category', 'category_id=' . $child['category_id'], 'SSL'),
+						);
+					}
+				}
+				$data['menu_blog'][] = array(
+					'title' => $item['title'],
+					'href'  => $this->url->link('extension/d_blog_module/category', 'category_id=' . $item['category_id'], 'SSL'),
+					'list_child' => !empty($data_child) ? $data_child : '',
+				);
+			}
+		}
 		
 		$data['home'] = $this->url->link('common/home');
 		$data['wishlist'] = $this->url->link('account/wishlist', '', true);

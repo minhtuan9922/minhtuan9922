@@ -418,6 +418,8 @@ class ControllerCommonHome extends Controller {
 //        $data['text_read_more'] = $this->language->get('text_read_more');
 //        $data['button_continue'] = $this->language->get('button_continue');
 //        $data['continue'] = $this->url->link('common/home', '', 'SSL');
+
+        $data['sever'] = HTTPS_SERVER;
         
         $data['news'] = $this->url->link('extension/d_blog_module/category', '', true);
 		$data['column_left'] = $this->load->controller('common/column_left');
